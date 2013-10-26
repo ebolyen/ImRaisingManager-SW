@@ -1,10 +1,11 @@
 'use strict';
-locale = {};
+var locale = {};
 
 locale.title = function(currentPage) { 
 	return currentPage + " | ImRaising Manager";
 };
 
+// page[0] is the default route if the path is undefined
 locale.pages = [
 	{
 		path:"/home", 

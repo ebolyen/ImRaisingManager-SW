@@ -1,19 +1,22 @@
 'use strict';
 var app = angular.module('ImRaisingManager', [])
 	.config(['$routeProvider', function($routeProvider) {
+		// Assign route URL and controller
 		function newRouteObject(page) {
 			return { 
 				templateUrl: page.serverPath,  
 				controller: function($scope, $rootScope, $routeParams) {
-					$scope.pathParam = $routeParams.pathParam; 
+					$scope.pathParam = $routeParams.pathParam;
 					$rootScope.currentPage = page.title;
 				}
 			};
 		}
 		
+		// Add menu routes
 		for(var i=0; i<locale.pages.length; i++){
 			var page = locale.pages[i];
 			$routeProvider.when(page.path, newRouteObject(page));
+			// Add submenu routes
 			if(page.children){
 				for(var j= 0; j<page.children.length; j++){
 					var child = page.children[j];
@@ -23,9 +26,11 @@ var app = angular.module('ImRaisingManager', [])
 			}
 			$routeProvider.when(page.path+"/:pathParam", newRouteObject(page));
 		}
+		// Default route if undefined
 		$routeProvider.otherwise({redirectTo: locale.pages[0].path});
 	}]);
 
+// Kickstart the application, only instances and constants can be injected to prevent runtime system configuration
 app.run(function($rootScope) {
 	$rootScope.locale = locale;
 	$rootScope.currentPage = locale.pages[0];
@@ -84,7 +89,27 @@ app.controller('testCtrl', function($scope, test) {
 
 });
 
-
+/*
+<jtable src="tableVar" class="ng-isolate-scope ng-scope"></jtable>
+var tableVar = {
+	headers: [
+		{
+			column: "First",
+			data: "key1",
+			hidden: false
+		},
+		// ...
+	],
+	rows: [
+		{
+			key1: "a",
+			key2: "b",
+			key3: "c",
+			key4: "d"
+		},
+		// ...
+	]	
+};*/
 app.directive('jtable', function () {
     return {
       restrict: 'E',
