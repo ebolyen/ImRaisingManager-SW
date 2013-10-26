@@ -9,7 +9,9 @@
     <script src="js/main.js"></script>
   </head>
   <body>
-  	
+  	<div id="headerBar"></div>
+  	<div id="center">
+  		<div id="navigation">
    	<ul>
    		<li data-ng-repeat="page in locale.pages" ><a href="#{{page.path}}">{{page.name}}</a>
    			<ul data-ng-show="page.children">
@@ -17,14 +19,14 @@
    			</ul>
    		</li>
    	</ul>
-   	
-   	Here:
-   	<div ng-controller="testCtrl">
-  	<jtable src="locale.sampleTable"></jtable>	
-  	</div>
-  	there:
-   	
-   	
+   	</div>
+   	<div id="content">
+   		
 	<div data-ng-view></div>
+   	</div>
+   	</div>
+   	<div id="footer"></div>
+   	
+   	
   </body>
 </html>
