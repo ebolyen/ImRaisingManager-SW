@@ -1,8 +1,9 @@
-locale = {}
+'use strict';
+locale = {};
 
 locale.title = function(currentPage) { 
-	return currentPage + " | ImRaising Manager" ;
-} 
+	return currentPage + " | ImRaising Manager";
+};
 
 locale.pages = [
 	{
@@ -59,8 +60,6 @@ locale.pages = [
 
 ];
 
-
-
 locale.sampleTable = {
 	headers: [
 		{
@@ -107,8 +106,5 @@ locale.sampleTable = {
 			key3: "c2",
 			key4: "d2"
 		},
-	]
-
-
-	
-}
+	]	
+};
